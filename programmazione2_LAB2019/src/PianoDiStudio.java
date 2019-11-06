@@ -9,7 +9,7 @@
  * @author Eleonora Totaro
  * @version 1.0
  */
-public class pianoDiStudio {
+public class PianoDiStudio {
 	private final int matricola;
 	private Corso[] corsiAsceltaSelezionati;
 	private final Curriculum curriculum;
@@ -19,7 +19,7 @@ public class pianoDiStudio {
 	 * @param matricola
 	 * @param curriculum
 	 */
-	public pianoDiStudio(int matricola, Curriculum curriculum){
+	public PianoDiStudio(int matricola, Curriculum curriculum){
 		this.matricola = matricola;
 		this.curriculum = curriculum;
 	}
