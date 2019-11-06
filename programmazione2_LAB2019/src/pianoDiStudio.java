@@ -3,7 +3,7 @@
  * <p>Description: classe dedicata al piano di studi di uno studente contente la matricla dello studente, i corsi
  * 				   a scelta selezionati, il curriculm ai cui lo studente si vuole iscrivere e i metodi relativi alla
  * 				   gestione dei corsi</p>
- * <p>Company: Dipartimento di Informatica, Università degli studi di Bari</p>
+ * <p>Company: Dipartimento di Informatica, Universita degli studi di Bari</p>
  * <p>Class description: pianoDiStudio </p>
  * Piano di studio per gli studenti di Programmazione 2
  * @author Eleonora Totaro
@@ -26,19 +26,19 @@ public class pianoDiStudio {
 	
 	/**
 	 * Il metodo addCorsoAScelta() serve per aggiungere un nuovo corso a scelta all'interno del vettore contenente
-	 * i corsi a scelta di uno studente. Prima di aggiungere un nuovo corso è importante fare dei controlli. Punto
+	 * i corsi a scelta di uno studente. Prima di aggiungere un nuovo corso importante fare dei controlli. Punto
 	 * primo dobbiamo verificare che il corso selezionato sia presente tra quelli a scelta del curriculm selezionato 
-	 * dallo studente, punto secondo dobbiamo verificare se il corso che si vuole aggiungere non sia già stato 
+	 * dallo studente, punto secondo dobbiamo verificare se il corso che si vuole aggiungere non sia gia stato 
 	 * selezionato in passato, punto terzo dobbiamo verificare se il corso che si vuole aggiungere non abbia orari che 
-	 * vadano in sovrapposizione con corsi già selezionati e infine dobbiamo verificare la disponibilità di posti  disposnibili 
+	 * vadano in sovrapposizione con corsi gia selezionati e infine dobbiamo verificare la disponibilita di posti  disposnibili 
 	 * per il corso.
-	 * Se tutte le condizioni sono verificate allora si può aggiungere il corso all'intreno del vettori corsi.
+	 * Se tutte le condizioni sono verificate allora si puo aggiungere il corso all'intreno del vettori corsi.
 	 * @param corso
 	 */
 	public void addCorsoAScelta(Corso corso){
 		// aggiunge corso all'attributi corsiAscelta
-		//ma prima è necessario effettuare un controllo
-		//il corso passato è presente tra curr.ascelta e non è presente in corsiAscletelezionati
+		//ma primanecessario effettuare un controllo
+		//il corso passato presente tra curr.ascelta e non presente in corsiAscletelezionati
 		//Nessuna sovrapposizione di orari
 		boolean nonSopvrapposto = this.corsoSovrapposto(corso);
 		//presenza posti disppnibili
@@ -55,7 +55,7 @@ public class pianoDiStudio {
 	/**
 	 * Il metodo corsoSovrapposto utilizza un altro metodo presente nella classe Corso, verificaConflitto() per verificare se il corso 
 	 * a scelta che si vuole aggiungere alla propria lista dei corsi non abbia orari che vadano a sovrapporsi a orari di un altro corso
-	 * già selezionato in passato.
+	 * gia selezionato in passato.
 	 * @param corso
 	 * @return nonSovrapposto
 	 */
@@ -103,7 +103,7 @@ public class pianoDiStudio {
 	}
 
 	/**
-	 * Il metodo controlloConsistenza effettua un controllo affinchè tutte le condizioni sia verificate prima di effettuare un salvataggio
+	 * Il metodo controlloConsistenza effettua un controllo affinchï¿½ tutte le condizioni sia verificate prima di effettuare un salvataggio
 	 */
 	private void controlloConsistenza() {
 		// TODO Auto-generated method stub

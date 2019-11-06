@@ -1,7 +1,7 @@
 /**
  * <p>Title: Orario</p>
  * <p>Description: classe dedicata alla gestione degli orari di un corso contenete l'ora inizio di un corso, l'ora di fine e il girno della settimana</p>
- * <p>Company: Dipartimento di Informatica, Università degli studi di Bari</p>
+ * <p>Company: Dipartimento di Informatica, Universitï¿½ degli studi di Bari</p>
  * <p>Class description: Orario </p>
  * Orari per gli studenti di Programmazione 2
  * @author Eleonora Totaro
@@ -52,20 +52,20 @@ public class Orario {
 	/**
 	 * Il metodo verificaConflitto viene utilizzato per effettuare la verifica tra gli orari dei corsi presenti nel piano di studi di uno studente
 	 * al momento dell'aggiunta di un nuovo corso. Viene verificato se l'orario di inizio di un corso non sia precedente all'orario di fine di un
-	 * altro corso già presente in quel giorno o se l'ora di fine di un corso non sia successiva all'ora di inizio di un corso già presente per quel giorno
+	 * altro corso giï¿½ presente in quel giorno o se l'ora di fine di un corso non sia successiva all'ora di inizio di un corso giï¿½ presente per quel giorno
 	 * @param orario
 	 * @return conflitto
 	 */
 	public boolean verificaConflitto(Orario orario) {
-		boolean conflitto = false;
+	/*	boolean conflitto = false;
 		if (this.giornoSettimana.equals(orario.giornoSettimana)){
 			if(this.oraFine > orario.oraInizio || orario.oraFine > this.oraInizio){ //da modificare con le giuste condizioni
 				conflitto = true;
 				return conflitto;
 			}
 			
-		}
-		
+		}*/
+		return true;
 	}
 		
 	}

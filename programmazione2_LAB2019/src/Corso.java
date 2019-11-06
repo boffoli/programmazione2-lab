@@ -1,7 +1,7 @@
 /**
  * <p>Title: Corso</p>
- * <p>Description: classe dedicata a un corso presente in un Curriculum che uno studente potrà seguire </p>
- * <p>Company: Dipartimento di Informatica, Università degli studi di Bari</p>
+ * <p>Description: classe dedicata a un corso presente in un Curriculum che uno studente potrï¿½ seguire </p>
+ * <p>Company: Dipartimento di Informatica, Universitï¿½ degli studi di Bari</p>
  * <p>Class description: Corso </p>
  * Corso per gli studenti di Programmazione 2
  * @author Eleonora Totaro
@@ -9,8 +9,8 @@
  */
 
 
-//applicare ereditarietà  a causa degli elementi specifici di corsoAscelta
-public class Corso {
+//applicare ereditarietï¿½  a causa degli elementi specifici di corsoAscelta
+public class Corso implements Comparable{
 	private String nome;
 	private boolean aScelta; 
 	private Cfu cfu;
@@ -54,7 +54,7 @@ public class Corso {
 
 
 	/**
-	 * Questo metodo serve per verificare la disponibilità di posti liberi all'interno di un corso
+	 * Questo metodo serve per verificare la disponibilitï¿½ di posti liberi all'interno di un corso
 	 * @return disponibile
 	 */
 	public boolean isDisponibile() {
@@ -72,7 +72,7 @@ public class Corso {
 	 * Questo metodo viene invocato in aiuto a un altro metodo presente nella classe piano di studi 
 	 * chiamato corsoSovrapposto per verificare se quando lo studente aggiunge un nuovo corso al
 	 * suo piano di studio, gli orari di quest'ultimo non si sovrappongano con gli orari di un altro
-	 * corso già inserito all'interno del proprio piano di studi
+	 * corso giï¿½ inserito all'interno del proprio piano di studi
 	 * 
 	 * @param corso
 	 * @return conflitto
@@ -117,7 +117,19 @@ public class Corso {
 		}
 		return ok;
 	}
+
+	@Override
+	public int compareTo(Object o) {
+			return this.nome.compareTo(((Corso)o).nome);
+	}
 	
+	public boolean equals(Object o) {
+		return this.nome.equals(((Corso)o).nome);
+	}
+	
+	public int hashCode() {
+		return this.nome.hashCode();
+	}
 }
 
 

@@ -2,7 +2,7 @@
  * <p>Title: Cfu</p>
  * <p>Description: classe dedicata ai CFU di un corso utile per verificare se i crediti inseriti dal gestore 
  *    			   del programma, rientrano all'interno del range di valori ammissibili   </p>
- * <p>Company: Dipartimento di Informatica, Università degli studi di Bari</p>
+ * <p>Company: Dipartimento di Informatica, Universita degli studi di Bari</p>
  * <p>Class description: Cfu </p>
  * Cfu per gli studenti di Programmazione 2
  * @author Eleonora Totaro

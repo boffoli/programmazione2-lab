@@ -1,7 +1,10 @@
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * <p>Title: Curriculum</p>
  * <p>Description: classe dedicata al curriculm di un corso universitario indicando nome del corso di laurea, i corsi presenti al suo interno e il numero minimo di cfu necessari per il conseguimento di tale curriculum </p>
- * <p>Company: Dipartimento di Informatica, Università degli studi di Bari</p>
+ * <p>Company: Dipartimento di Informatica, Universitï¿½ degli studi di Bari</p>
  * <p>Class description: Curriculum </p>
  * Curriculum per gli studenti di Programmazione 2
  * @author Eleonora Totaro
@@ -13,7 +16,7 @@
 
 public class Curriculum {
 	private String nome;
-	private Corso[] corsi;
+	private HashSet corsi = new HashSet() ;
 	private final int minCfu;
 	
 	/**
@@ -22,7 +25,7 @@ public class Curriculum {
 	 * @param minCfu
 	 * @param corsi
 	 */
-	public Curriculum(String nome, int minCfu, Corso[] corsi){
+	public Curriculum(String nome, int minCfu, HashSet corsi){
 		this.nome = nome;
 		this.minCfu = minCfu;
 		this.corsi = corsi;
@@ -36,7 +39,7 @@ public class Curriculum {
 	
 	
 	public void add(Corso corso){
-		corsi[0] = corso;
+		corsi.add(corso);
 	}
 	
 	
@@ -47,7 +50,7 @@ public class Curriculum {
 	 */
 	public boolean verificaConseguimento(Corso[] corsi){
 		boolean ok = false;
-		// se this.minCfu è <= del totale dei cfu all'interno di corsi[] allora ok = true
+		// se this.minCfu ï¿½ <= del totale dei cfu all'interno di corsi[] allora ok = true
 		
 		return ok;
 	}

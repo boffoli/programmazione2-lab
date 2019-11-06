@@ -11,8 +11,8 @@ public class pianoDiStuidi {
 	
 	public void addCorsoAScelta(Corso corso){
 		// aggiunge corso all'attributi corsiAscelta
-		//ma prima è necessario effettuare un controllo
-		//il corso passato è presente tra curr.ascelta e non è presente in vorsiAscletelezionati
+		//ma prima necessario effettuare un controllo
+		//il corso passato presente tra curr.ascelta e non presente in vorsiAscletelezionati
 		//Nessuna sovrapposizione di orari
 		boolean nonSopvrapposto = this.corsoSovrapposto(corso);
 		//presenza posti disppnibili
