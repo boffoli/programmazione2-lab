@@ -16,7 +16,7 @@ import java.util.Set;
 
 public class Curriculum {
 	private String nome;
-	private HashSet corsi = new HashSet() ;
+	private HashSet<Corso> corsi = new HashSet<Corso>() ;
 	private final int minCfu;
 	
 	/**

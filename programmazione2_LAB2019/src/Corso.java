@@ -1,3 +1,7 @@
+import java.util.LinkedList;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 /**
  * <p>Title: Corso</p>
  * <p>Description: classe dedicata a un corso presente in un Curriculum che uno studente potr� seguire </p>
@@ -19,8 +23,7 @@ public class Corso implements Comparable{
 	private final int postiMax;
 	private int postiDisponibili;
 	
-	
-	private Orario[] orari;
+	private LinkedList<Orario> orari = new LinkedList<Orario>();
 	
 	
 	/**
@@ -40,7 +43,8 @@ public class Corso implements Comparable{
 		this.aScelta = aScelta;
 		this.postiMax = postiMax;
 		this.postiDisponibili = postiMax;
-		this.orari = orari;
+		for(int i = 0; i < orari.length ; i++)
+			this.orari.add(orari[i]);
 		this.semestre = semestre;// fare controllo 
 	}
 	
@@ -83,10 +87,12 @@ public class Corso implements Comparable{
 		if (this.semestre == corso.semestre){
 			int i = 0;
 			int j = 0;
-			
-			while(!conflitto && i < this.orari.length){
-				while(!conflitto && j< corso.orari.length){	
-					if(this.orari[i].verificaConflitto(corso.orari[j])){
+			Iterator it1 = (Iterator) this.orari.iterator();
+			Iterator it2 = (Iterator) corso.orari.iterator();
+
+			while(!conflitto && it1.){
+				while(!conflitto && j< corso.orari.size()){	
+					if(this.orari..verificaConflitto(corso.orari[j])){
 						conflitto = true;
 						j++;
 					}
