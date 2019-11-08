@@ -1,6 +1,5 @@
+import java.util.Iterator;
 import java.util.LinkedList;
-
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 /**
  * <p>Title: Corso</p>
@@ -85,19 +84,16 @@ public class Corso implements Comparable{
 	public boolean verificaConflitto(Corso corso) {
 		boolean conflitto = false;
 		if (this.semestre == corso.semestre){
-			int i = 0;
-			int j = 0;
-			Iterator it1 = (Iterator) this.orari.iterator();
-			Iterator it2 = (Iterator) corso.orari.iterator();
+			Iterator<Orario> it1 = this.orari.iterator();
+			Iterator<Orario> it2 = corso.orari.iterator();
 
-			while(!conflitto && it1.){
-				while(!conflitto && j< corso.orari.size()){	
-					if(this.orari..verificaConflitto(corso.orari[j])){
+			while(!conflitto && it1.hasNext()){
+				Orario orario = it1.next();
+				while(!conflitto && it2.hasNext()){	
+					if(orario.verificaConflitto(it2.next())){
 						conflitto = true;
-						j++;
 					}
-					i++;
-					j = 0;
+					it2 = corso.orari.iterator();
 				}
 			}
 		}
