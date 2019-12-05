@@ -24,6 +24,11 @@ public class Cfu {
 			System.out.println ("Valore crediti fuori intervallo (" + MIN_CREDITI + "-" + MAX_CREDITI +")");
 		}
 	}
+
+	public int getValue() {
+		// TODO Auto-generated method stub
+		return this.value;
+	}
 }
 
 

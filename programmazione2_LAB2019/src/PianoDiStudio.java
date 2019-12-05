@@ -1,3 +1,6 @@
+import java.util.Iterator;
+import java.util.TreeSet;
+
 /**
  * <p>Title: Piano di studio</p>
  * <p>Description: classe dedicata al piano di studi di uno studente contente la matricla dello studente, i corsi
@@ -11,8 +14,9 @@
  */
 public class PianoDiStudio {
 	private final int matricola;
-	private Corso[] corsiAsceltaSelezionati;
+	private TreeSet<Corso> corsiAsceltaSelezionati = new TreeSet<Corso>();
 	private final Curriculum curriculum;
+	private int cfuCorrenti = 0;
 	
 	/**
 	 * Costruttore
@@ -22,6 +26,7 @@ public class PianoDiStudio {
 	public PianoDiStudio(int matricola, Curriculum curriculum){
 		this.matricola = matricola;
 		this.curriculum = curriculum;
+		this.cfuCorrenti = curriculum.getCfuObbligatori();// crediti corsi obbligatori del CURR
 	}
 	
 	/**
@@ -36,20 +41,12 @@ public class PianoDiStudio {
 	 * @param corso
 	 */
 	public void addCorsoAScelta(Corso corso){
-		// aggiunge corso all'attributi corsiAscelta
-		//ma primanecessario effettuare un controllo
-		//il corso passato presente tra curr.ascelta e non presente in corsiAscletelezionati
-		//Nessuna sovrapposizione di orari
-		boolean nonSopvrapposto = this.corsoSovrapposto(corso);
-		//presenza posti disppnibili
-		boolean disponibile = corso.isDisponibile();
-		
-		
-		//POST CONDIZIONE 
-		/* 1. */
-		corso.assegnaPosto(); // invocazione fuori astrazione, valutare i contenitori 
-		// 2. aggiungere corso a corsiAsceltaSelezionati
-		
+		//presenza posti disponibili && non sovrapposti
+		if(corso.isDisponibile() && this.corsoNonSovrapposto(corso)) {
+			corso.assegnaPosto(); // invocazione fuori astrazione, valutare i contenitori 
+			this.corsiAsceltaSelezionati.add(corso);
+			this.cfuCorrenti = this.cfuCorrenti + corso.getCfu();
+		}
 	}
 	
 	/**
@@ -60,13 +57,12 @@ public class PianoDiStudio {
 	 * @return nonSovrapposto
 	 */
 	
-	private boolean corsoSovrapposto(Corso corso) {
-		int i = 0;
+	private boolean corsoNonSovrapposto(Corso corso) {
+		Iterator<Corso> it = this.corsiAsceltaSelezionati.iterator();
 		boolean nonSovrapposto = true;
-		while(nonSovrapposto && i < corsiAsceltaSelezionati.length){
-				if(corsiAsceltaSelezionati[i].verificaConflitto(corso)){
+		while(nonSovrapposto && it.hasNext()){
+				if(it.next().verificaConflitto(corso)){
 				nonSovrapposto = false;
-				i++;
 			}
 		}
 		return nonSovrapposto;
@@ -77,8 +73,9 @@ public class PianoDiStudio {
 	 * @param corso
 	 */
 	public void removeCorsoAScelta(Corso corso){
-		// rimuove corso all'attributi corsiAscelta
-		
+		this.corsiAsceltaSelezionati.remove(corso);
+		this.cfuCorrenti = this.cfuCorrenti - corso.getCfu();
+
 	}
 	
 	/**
@@ -87,26 +84,44 @@ public class PianoDiStudio {
 	 */
 
 	public Corso[] getCorsiASceltaSelezionabili() {
-		//
 		return this.curriculum.getCorsiAScelta();
 	}
 	
+	/**
+	 * Questo metodo valuta il conseguimento di un numero minimo di crediti per lo studente
+	 * @param corsi
+	 * @return ok
+	 */
+	public boolean verificaConseguimento(Corso[] corsi){
+		boolean ok = false;
+		// se this.minCfu  <= del totale dei cfu all'interno di corsi[] allora ok = true
+		int totCrediti = 0;
+		for(int i = 0; i < corsi.length; i++)
+			totCrediti = totCrediti + corsi[i].getCfu();
+		
+		if (totCrediti >= this.curriculum.getMinCfu())
+			ok = true;
+		
+		return ok;
+	}
 	
 	/**
-	 * Il metodo salva utilizza query di salvataggio o scrittura su file per salvare le impostazioni selezionate dallo studente
+	 * Il metodo salva su file le impostazioni selezionate dallo studente
 	 */
 	public void salva() {
-		this.controlloConsistenza();
-		
-		// query di salvataggio o scrittura su file 
+		int i = 0;
+		if(this.controlloConsistenza())
+				i = 0;
+		// serializzazione e scrittura su file 
 		
 	}
 
 	/**
 	 * Il metodo controlloConsistenza effettua un controllo affinch� tutte le condizioni sia verificate prima di effettuare un salvataggio
 	 */
-	private void controlloConsistenza() {
-		// TODO Auto-generated method stub
+	boolean controlloConsistenza() {
+		// da implementare
+		return true;
 		
 	}
 }

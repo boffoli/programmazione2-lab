@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -25,7 +27,7 @@ public class Curriculum {
 	 * @param minCfu
 	 * @param corsi
 	 */
-	public Curriculum(String nome, int minCfu, HashSet corsi){
+	public Curriculum(String nome, int minCfu, HashSet<Corso> corsi){
 		this.nome = nome;
 		this.minCfu = minCfu;
 		this.corsi = corsi;
@@ -44,29 +46,37 @@ public class Curriculum {
 	
 	
 	/**
-	 * Questo metodo il conseguimento di un numero minimo di crediti per lo studente
-	 * @param corsi
-	 * @return ok
-	 */
-	public boolean verificaConseguimento(Corso[] corsi){
-		boolean ok = false;
-		// se this.minCfu � <= del totale dei cfu all'interno di corsi[] allora ok = true
-		
-		return ok;
-	}
-	
-	/**
 	 * Questo metodo itera attraverso un ciclo FOR sul vettore dei corsi per visualizzare quelli a scelta
 	 * utilizzato da un metodo definito nella classe Corso chiamato isAscelta()
 	 * @return
 	 */
 	
 	public Corso[] getCorsiAScelta() {
-		// TODO Auto-generated method stub
-		//FOR sul vettori corsi per scegliere quelli a scelta e darli come return 
-		// facendo uso di corso.isAscelta()
-		return null;
+
+		ArrayList<Corso> corsiAScelta = new ArrayList<Corso>();
+		Iterator<Corso> itr = this.corsi.iterator();
+		while(itr.hasNext()) {
+			Corso corso = itr.next();
+			if(corso.isAscelta())
+				corsiAScelta.add(corso);
+		}
+		return (Corso[]) corsiAScelta.toArray();
 	}
 
+	
+	public int getMinCfu() {
+		return this.minCfu;
+	}
+
+	public int getCfuObbligatori() {
+		int cfu  = 0;
+		Iterator<Corso> itr = this.corsi.iterator();
+		while(itr.hasNext()) {
+			Corso corso = itr.next();
+			if(!corso.isAscelta())
+				cfu = cfu + corso.getCfu();
+		}		
+		return cfu;
+	}
 
 }

@@ -57,14 +57,38 @@ public class Orario {
 	 * @return conflitto
 	 */
 	public boolean verificaConflitto(Orario orario) {
-	/*	boolean conflitto = false;
+		// interi per THIS ora inizio
+		String[] soi1 = this.oraInizio.split(":");
+		int oi1 = Integer.parseInt(soi1[0]);
+		int mi1 = Integer.parseInt(soi1[1]);
+		
+		// interi per THIS ora fine
+		String[] sof1 = this.oraFine.split(":");
+		int of1 = Integer.parseInt(soi1[0]);
+		int mf1 = Integer.parseInt(soi1[1]);
+		
+		// interi per PRM ora inizio
+		String[] soi2 = orario.oraInizio.split(":");
+		int oi2 = Integer.parseInt(soi2[0]);
+		int mi2 = Integer.parseInt(soi2[1]);
+		
+		// interi per PRM ora fine
+		String[] sof2 = orario.oraFine.split(":");
+		int of2 = Integer.parseInt(soi2[0]);
+		int mf2 = Integer.parseInt(soi2[1]);
+		 
+		// valuto conflitto
+		boolean conflitto = false;
 		if (this.giornoSettimana.equals(orario.giornoSettimana)){
-			if(this.oraFine > orario.oraInizio || orario.oraFine > this.oraInizio){ //da modificare con le giuste condizioni
+			if(of1 > oi2 || of2 > oi1){ 
 				conflitto = true;
-				return conflitto;
 			}
-			
-		}*/
+		return conflitto;
+	
+		}
+		
+
+
 		return true;
 	}
 		

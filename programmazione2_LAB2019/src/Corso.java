@@ -44,7 +44,10 @@ public class Corso implements Comparable{
 		this.postiDisponibili = postiMax;
 		for(int i = 0; i < orari.length ; i++)
 			this.orari.add(orari[i]);
-		this.semestre = semestre;// fare controllo 
+		if(semestre == 1 || semestre == 2)
+			this.semestre = semestre;
+		else // lanciare eccezione personalizzata
+			this.semestre = 0; // da cancellare
 	}
 	
 	/**
@@ -120,6 +123,10 @@ public class Corso implements Comparable{
 		return ok;
 	}
 
+	public int getCfu() {
+		return this.cfu.getValue();
+	}
+	
 	@Override
 	public int compareTo(Object o) {
 			return this.nome.compareTo(((Corso)o).nome);
